@@ -28,7 +28,7 @@ const cors = require('cors');
 
 
 var corsOptions = {
-  origin: 'mongodb+srv://islam:E47OCZupGncpDPU3@cluster0.1dbk9td.mongodb.net/test?retryWrites=true&w=majority:5000',
+  origin: 'http://127.0.0.1:5000',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
