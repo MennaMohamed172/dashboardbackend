@@ -2,7 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const schedule = require('node-schedule');
 const dbConnection = require("./db/config")
-
+const cors = require('cors');
 const app = express()
 
 // to parse automatically
@@ -21,18 +21,18 @@ const categoryRouter = require("./routers/category")
 const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 
-const cors = require('cors');
-// app.use(cors({
-//   origin: '*',
-// }));
+
+app.use(
+  cors({
+  origin: 'http://localhost:3000',
+}));
+
+
 // var corsOptions = {
 //   origin: '*',
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // }
-var corsOptions = {
-  origin: 'http://127.0.0.1.com',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+
 app.use(articalRouter)
 app.use(PageRouter)
 app.use(registerRouter)
@@ -52,6 +52,5 @@ app.listen(port, () => {
   console.log("Server is up and running on port " + port)
   console.log("All Done Successfully")
 })
-
  
 
