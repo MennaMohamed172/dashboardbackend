@@ -2,7 +2,8 @@ require("dotenv").config()
 const express = require("express")
 const schedule = require('node-schedule');
 const dbConnection = require("./db/config")
-
+var cors = require('cors')
+app.use(cors())
 const app = express()
 
 // to parse automatically
