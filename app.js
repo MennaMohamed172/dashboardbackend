@@ -22,15 +22,15 @@ const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 
 const cors = require('cors');
-app.use(cors({
+// app.use(cors({
+//   origin: '*',
+// }));
+
+
+var corsOptions = {
   origin: '*',
-}));
-
-
-// var corsOptions = {
-//   origin: 'http://127.0.0.1:5000',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 app.use(articalRouter)
 app.use(PageRouter)
