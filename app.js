@@ -2,8 +2,8 @@ require("dotenv").config()
 const express = require("express")
 const schedule = require('node-schedule');
 const dbConnection = require("./db/config")
-var cors = require('cors')
-app.use(cors())
+// var cors = require('cors')
+// app.use(cors())
 const app = express()
 
 // to parse automatically
@@ -24,10 +24,10 @@ const tageArticleRouter=require('./routers/tagArtical')
 
 
 
-var corsOptions = {
-  origin: 'mongodb+srv://islam:E47OCZupGncpDPU3@cluster0.1dbk9td.mongodb.net/test?retryWrites=true&w=majority:5000',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// var corsOptions = {
+//   origin: 'mongodb+srv://islam:E47OCZupGncpDPU3@cluster0.1dbk9td.mongodb.net/test?retryWrites=true&w=majority:5000',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 app.use(articalRouter)
 app.use(PageRouter)
