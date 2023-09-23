@@ -2,8 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const schedule = require('node-schedule');
 const dbConnection = require("./db/config")
-// var cors = require('cors')
-// app.use(cors())
+
 const app = express()
 
 // to parse automatically
@@ -22,15 +21,16 @@ const categoryRouter = require("./routers/category")
 const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 
-
 const cors = require('cors');
-app.use(cors({
-  origin: 'mongodb+srv://islam:E47OCZupGncpDPU3@cluster0.1dbk9td.mongodb.net/test?retryWrites=true&w=majority:5000',
-}));
-// var corsOptions = {
+// app.use(cors({
 //   origin: 'mongodb+srv://islam:E47OCZupGncpDPU3@cluster0.1dbk9td.mongodb.net/test?retryWrites=true&w=majority:5000',
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// }
+// }));
+
+
+var corsOptions = {
+  origin: 'mongodb+srv://islam:E47OCZupGncpDPU3@cluster0.1dbk9td.mongodb.net/test?retryWrites=true&w=majority:5000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 app.use(articalRouter)
 app.use(PageRouter)
@@ -39,7 +39,7 @@ app.use(tagRouter)
 app.use(categoryRouter)
 app.use(categoryArticleRputer)
 app.use(tageArticleRouter)
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -51,6 +51,9 @@ app.listen(port, () => {
   console.log("Server is up and running on port " + port)
   console.log("All Done Successfully")
 })
+
+ 
+
 
  
 
