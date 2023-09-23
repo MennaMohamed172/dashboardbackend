@@ -30,7 +30,7 @@ const cors = require('cors');
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // }
 var corsOptions = {
-  origin: 'http://example.com',
+  origin: 'http://127.0.0.1.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(articalRouter)
