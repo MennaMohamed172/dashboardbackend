@@ -25,13 +25,14 @@ const cors = require('cors');
 // app.use(cors({
 //   origin: '*',
 // }));
-
-
+// var corsOptions = {
+//   origin: '*',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 var corsOptions = {
-  origin: '*',
+  origin: 'http://example.com',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-
 app.use(articalRouter)
 app.use(PageRouter)
 app.use(registerRouter)
