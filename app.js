@@ -36,7 +36,7 @@ app.use(tagRouter)
 app.use(categoryRouter)
 app.use(categoryArticleRputer)
 app.use(tageArticleRouter)
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 
 app.use(express.urlencoded({ extended: true }));
