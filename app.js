@@ -2,7 +2,7 @@ require("dotenv").config()
 const express = require("express")
 const schedule = require('node-schedule');
 const dbConnection = require("./db/config")
-
+const cors = require('cors');
 const app = express()
 
 // to parse automatically
@@ -21,16 +21,17 @@ const categoryRouter = require("./routers/category")
 const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 
-const cors = require('cors');
-// app.use(cors({
+
+app.use(
+  cors({
+  origin: 'http://localhost:3000',
+}));
+
+
+// var corsOptions = {
 //   origin: '*',
-// }));
-
-
-var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 app.use(articalRouter)
 app.use(PageRouter)
