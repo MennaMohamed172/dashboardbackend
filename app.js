@@ -22,15 +22,15 @@ const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 
 const cors = require('cors');
-// app.use(cors({
-//   origin: 'mongodb+srv://islam:E47OCZupGncpDPU3@cluster0.1dbk9td.mongodb.net/test?retryWrites=true&w=majority:5000',
-// }));
+app.use(cors({
+  origin: '*',
+}));
 
 
-var corsOptions = {
-  origin: 'http://127.0.0.1:5000',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+// var corsOptions = {
+//   origin: 'http://127.0.0.1:5000',
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 app.use(articalRouter)
 app.use(PageRouter)
