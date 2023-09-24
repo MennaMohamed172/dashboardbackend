@@ -12,15 +12,6 @@ app.use(express.urlencoded({ extended: false }))
 // connect to the db
 dbConnection(process.env.MONGO_URI)
 
-// routers
-const registerRouter = require("./routers/register")
-const articalRouter = require("./routers/articels")
-const tagRouter = require("./routers/tags")
-const PageRouter = require("./routers/page")
-const categoryRouter = require("./routers/category")
-const categoryArticleRputer=require("./routers/articalCategory")
-const tageArticleRouter=require('./routers/tagArtical')
-
 const cors = require('cors');
 app.use(cors())
 app.use(cors({
@@ -32,6 +23,16 @@ var corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+// routers
+const registerRouter = require("./routers/register")
+const articalRouter = require("./routers/articels")
+const tagRouter = require("./routers/tags")
+const PageRouter = require("./routers/page")
+const categoryRouter = require("./routers/category")
+const categoryArticleRputer=require("./routers/articalCategory")
+const tageArticleRouter=require('./routers/tagArtical')
+
+
 
 app.use(articalRouter)
 app.use(PageRouter)
