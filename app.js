@@ -22,9 +22,10 @@ const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 
 const cors = require('cors');
-// app.use(cors({
-//   origin: '*',
-// }));
+app.use(cors())
+app.use(cors({
+  origin: '*',
+}));
 
 
 var corsOptions = {
