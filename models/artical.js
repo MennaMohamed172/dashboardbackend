@@ -14,7 +14,6 @@ const articalSchema = new mongoose.Schema({
   
   Phara: {
     type: String,
-    required: true,
     trim:true,
   },
   // id of category as foreign key(FK)
