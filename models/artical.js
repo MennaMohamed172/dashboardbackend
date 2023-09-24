@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const articalSchema = new mongoose.Schema({
   Title: {
     type: String,
-    maxlenght: 200,
     trim: true,
     required:true,
   },
@@ -19,7 +18,7 @@ const articalSchema = new mongoose.Schema({
   // id of category as foreign key(FK)
   categoryArtical : {
     type:mongoose.Schema.Types.ObjectId,
-    required:true,
+    // required:true,
     ref:'Category'
   },
   isDraft:{
