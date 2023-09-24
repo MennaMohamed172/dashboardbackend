@@ -45,7 +45,6 @@ const userSchema = new mongoose.Schema({
     },
     Website:{
       type:String,
-      required:true,
       trim:true,
           },
           Roles:{
