@@ -4,7 +4,6 @@ const categorySchema = new mongoose.Schema({
     type: String,
     maxlenght: 200,
     trim: true,
-    required:true,
   },
   permalink  : {
     type: String,
@@ -14,7 +13,6 @@ const categorySchema = new mongoose.Schema({
   
   Description: {
     type: String,
-    required: true,
     trim:true,
   }
 });
