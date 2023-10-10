@@ -20,7 +20,7 @@ const tagSchema = new mongoose.Schema({
     // id of Artical as foreign key(FK)
     tagArtical : {
       type:mongoose.Schema.Types.ObjectId,
-      required:true,
+      // required:true,
       ref:'Artical'
     }
 });
