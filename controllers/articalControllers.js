@@ -106,36 +106,47 @@ const preview = async function(req,res){
 }
 const moveArticalToTrash= async (req, res) => {
   try {
-    const { articalId } = req.params;
-    // Find the article by ID
-    const artical= await Artical.findById(articalId);
-
-    if (!artical) {
-      return res.status(404).send('Article not found');
+    const _id = req.params.id
+    const artical = await Artical.findByIdAndDelete(_id)
+    if(!artical) {
+       return res.status(404).send('UNABLE TO FIND USER')
     }
+    res.status(200).send(artical)
+}
+catch(e){
+   res.status(400).send(e)
+}
+  // try {
+  //   const { articalId } = req.params;
+  //   // Find the article by ID
+  //   const artical= await Artical.findById(articalId);
 
-    // Move the article to the trash
-    artical.isTrashed = true;
-    artical.deletedAt = new Date();
-    // artical.isDraft= true;
-    await artical.save();
-    // Schedule deletion after 30 days
-    const deletionDate = new Date();
-    deletionDate.setDate(deletionDate.getDate() + 30); // Add 30 days
-    schedule.scheduleJob(deletionDate, async () => {
-      try {
-        await Artical.findByIdAndDelete(articalId);
-        console.log(`Article deleted from trash after 30 days: ${articalId}`);
-      } catch (error) {
-        console.error('Error deleting article from trash:', error);
-      }
-    });
+  //   if (!artical) {
+  //     return res.status(404).send('Article not found');
+  //   }
 
-    res.status(200).json({ message: 'Article moved to trash successfully' });
-  } catch (error) {
-    console.error('Error moving article to trash:', error);
-    res.status(500).send(error);
-  }
+  //   // Move the article to the trash
+  //   artical.isTrashed = true;
+  //   artical.deletedAt = new Date();
+  //   // artical.isDraft= true;
+  //   await artical.save();
+  //   // Schedule deletion after 30 days
+  //   const deletionDate = new Date();
+  //   deletionDate.setDate(deletionDate.getDate() + 30); // Add 30 days
+  //   schedule.scheduleJob(deletionDate, async () => {
+  //     try {
+  //       await Artical.findByIdAndDelete(articalId);
+  //       console.log(`Article deleted from trash after 30 days: ${articalId}`);
+  //     } catch (error) {
+  //       console.error('Error deleting article from trash:', error);
+  //     }
+  //   });
+
+  //   res.status(200).json({ message: 'Article moved to trash successfully' });
+  // } catch (error) {
+  //   console.error('Error moving article to trash:', error);
+  //   res.status(500).send(error);
+  // }
 };
 module.exports = {
     getAllElement,
