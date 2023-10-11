@@ -11,7 +11,7 @@ router.put('/articel/publish/:id', articalControllers.updateArticalById)
 router.delete('/articel/publish/:id', articalControllers.deletById)
 router.post('/create-draft', articalControllers.draft)
 router.put('/create-draft/:id' ,articalControllers.updateDraftArticalById)
-router.post('/move-to-trash/:articalId', articalControllers.moveArticalToTrash)
+router.delete('/move-to-trash/:articalId', articalControllers.moveArticalToTrash)
 
 // problem
 router.get('/articel/publish/preview/:id', articalControllers.preview)
