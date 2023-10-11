@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const categorySchema = new mongoose.Schema({
-    name: {
+    Name: {
     type: String,
     maxlenght: 200,
     trim: true,
