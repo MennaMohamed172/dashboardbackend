@@ -24,8 +24,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 // routers
-const registerRouter = require("./routers/register")
-const userRouter = require('./routers/user')
+const userRouter = require("./routers/user")
 const articalRouter = require("./routers/articels")
 const tagRouter = require("./routers/tags")
 const PageRouter = require("./routers/page")
@@ -33,17 +32,18 @@ const categoryRouter = require("./routers/category")
 const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 const BookRouter=require('./routers/Book')
-
-
+const LoginRouter=require('./routers/login')
+const RegisterRouter=require('./routers/register)
 app.use(articalRouter)
+app.use(RegisterRouter)
 app.use(PageRouter)
-app.use(registerRouter)
+app.use(userRouter)
 app.use(tagRouter)
 app.use(categoryRouter)
 app.use(categoryArticleRputer)
 app.use(tageArticleRouter)
 app.use(BookRouter)
-app.use(userRouter)
+app.use(LoginRouter);
 app.use(cors(corsOptions));
 
 
