@@ -24,7 +24,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 // routers
-const userRouter = require("./routers/user")
+const registerRouter = require("./routers/register")
 const articalRouter = require("./routers/articels")
 const tagRouter = require("./routers/tags")
 const PageRouter = require("./routers/page")
@@ -33,11 +33,10 @@ const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 const BookRouter=require('./routers/Book')
 const LoginRouter=require('./routers/login')
-const RegisterRouter=require('./routers/register)
+
 app.use(articalRouter)
-app.use(RegisterRouter)
 app.use(PageRouter)
-app.use(userRouter)
+app.use(registerRouter)
 app.use(tagRouter)
 app.use(categoryRouter)
 app.use(categoryArticleRputer)
@@ -56,3 +55,4 @@ app.listen(port, () => {
   console.log("Server is up and running on port " + port)
   console.log("All Done Successfully")
 })
+
