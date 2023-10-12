@@ -32,8 +32,6 @@ const categoryRouter = require("./routers/category")
 const categoryArticleRputer=require("./routers/articalCategory")
 const tageArticleRouter=require('./routers/tagArtical')
 const BookRouter=require('./routers/Book')
-const LoginRouter=require('./routers/login')
-
 app.use(articalRouter)
 app.use(PageRouter)
 app.use(registerRouter)
@@ -42,7 +40,6 @@ app.use(categoryRouter)
 app.use(categoryArticleRputer)
 app.use(tageArticleRouter)
 app.use(BookRouter)
-app.use(LoginRouter);
 app.use(cors(corsOptions));
 
 
