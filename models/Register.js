@@ -10,13 +10,20 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim:true,
 
-  },
+  },FirstName: {
+      type: String,
+      required: true
+    },
+    LastName: {
+      type: String,
+      required: true
+    },
     Email : {
       type: String,
       required: true,
       trim: true,
       lowercase : true,
-      unique:false,
+     
       validate(val){
           if(!validator.isEmail(val)){
               throw new Error ('Email is INVALID')
@@ -36,36 +43,23 @@ const userSchema = new mongoose.Schema({
         }
       }
     },
-    ConfirmPassword:{
-      unique:true,
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 8,
-      validate(value){
-        let password = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])");
-        if(!password.test(value)){
-            throw new Error("Password must include uppercase , lowercase , numbers , speacial characters")
-        }
-      }
-    },
-    Roles:{
-      type: String,
-      required:true,
-      default : "Patient",
-      enum:["Patient","Receptionist","Admin"]
-    },
-    Gender:{
-      type: String,
-      required:true,
-      enum:["Male","Female"]
-    },
+    Website:{
+      type:String,
+      trim:true,
+          },
+          Roles:{
+            type: String,
+            required:true,
+            default : "users",
+            enum:["users","Admin"]
+          },
     tokens : [
       {
           type: String,
           required : true
       }
-    ]
+  ],
+
   })
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -75,11 +69,10 @@ userSchema.pre ("save" , async function ()  {
     if (user.isModified('Password')) {
      
      user.Password = await bcryptjs.hash(user.Password, 8)
-     user.ConfirmPassword = await bcryptjs.hash(user.ConfirmPassword, 8)
+    //  user.ConfirmPassword = await bcryptjs.hash(user.ConfirmPassword, 8)
      
     }
   })
-//////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////
 userSchema.methods.generateToken = async function () {
@@ -107,7 +100,7 @@ userSchema.methods.toJSON = function (){
 }
 
   
-const Register = mongoose.model( 'Register' , userSchema  )
+const User = mongoose.model( 'User' , userSchema  )
 
 
-module.exports = Register
+module.exports = User
