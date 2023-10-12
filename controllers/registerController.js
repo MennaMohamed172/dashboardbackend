@@ -1,11 +1,8 @@
-const Register = require('../models/Register')
+const User = require('../models/Register')
 // add new user
 const addNewUser= async function(req,res){
-  if(req.body.Password!=req.body.ConfirmPassword){
-    return res.status(400).json({message:"invalid password"})
-  }
     try {
-        const user = new Register(req.body)
+        const user = new User(req.body)
         const token = await user.generateToken()
         await user.save()
         res.status(200).json({user , token})
@@ -13,13 +10,12 @@ const addNewUser= async function(req,res){
       console.log(e);
         res.status(400).send(e)
     }
-    
 }
 
 // Get user by id
 const getUserById= async function(req,res){
   const _id = req.params.id
-  Register.findById(_id).then ((user) => {
+  User.findById(_id).then ((user) => {
       if(!user){
         return  res.status(404).send('UNABLE TO FIND')
       }
@@ -53,7 +49,7 @@ const updateUserInfoById = async function(req,res){
 
         const _id = req.params.id
 
-        const user = await Register.findById (_id)
+        const user = await User.findById (_id)
         if(!user){
             return res.status(404).send('No user is found')
         }
@@ -70,12 +66,28 @@ const updateUserInfoById = async function(req,res){
         res.status(400).send(error)
     }
 }
-// delted user by id
+
+// delete user by id
+
+// const deleteUserById =async function(req,res){
+//     User.findByIdAndRemove(req.params.userId, (err, deletedUser) => {
+//         if (err) {
+//           console.log(err);
+//           res.status(500).send(`Error deleting user: ${err}`);
+//         } else if (!deletedUser) {
+//           res.status(404).send(`User with id ${req.params.userId} not found`);
+//         } else {
+//           console.log(`Deleted user with id ${deletedUser._id}`);
+//           // res.send("deleted successfully")
+//           res.status(204).end();
+//         }
+//       });
+//     }
     
 const deleteUserById = async function(req,res){
   try {
       const _id = req.params.id
-      const user = await Register.findByIdAndDelete(_id)
+      const user = await User.findByIdAndDelete(_id)
       if(!user) {
          return res.status(404).send('UNABLE TO FIND USER')
       }
